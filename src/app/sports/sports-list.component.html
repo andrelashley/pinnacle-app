@@ -1,0 +1,5 @@
+<ul class="list" *ngIf='sports && sports.length'>
+  <li *ngFor='let sport of sports'>
+    <a [routerLink]="['/leagues', sport.id]">{{ sport.name }}</a>
+  </li>
+</ul>

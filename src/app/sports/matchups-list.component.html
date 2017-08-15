@@ -1,0 +1,13 @@
+<div *ngIf='matchups && matchups.length'>
+  <ul>
+    <li *ngFor='let matchup of matchups'>
+      <ul>
+        <li>{{matchup.startTime}}</li>
+        <div *ngIf='matchup.moneyline'>
+          <li>{{matchup.moneyline[0].price}}</li>
+          <li>{{matchup.moneyline[1].price}}</li>
+        </div>
+      </ul>
+    </li>
+  </ul>
+</div>

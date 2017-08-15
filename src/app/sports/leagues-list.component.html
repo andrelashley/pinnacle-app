@@ -1,0 +1,5 @@
+<ul class="list" *ngIf='leagues && leagues.length'>
+  <li *ngFor='let league of leagues'>
+    <a [routerLink]="['/matchups', league.id]">{{ league.name }}</a>
+  </li>
+</ul>
