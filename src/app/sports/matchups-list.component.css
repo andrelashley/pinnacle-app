@@ -1,0 +1,49 @@
+.matchup__container {
+  padding: 1.3em;
+}
+
+.matchup__container > div {
+  margin-bottom: 4em;
+  font-size: 12px;
+}
+
+.matchup__container__item {
+  border-bottom: 1px solid#CCC;
+  padding-bottom:1.2em;
+  padding-top:1.2em;
+  margin-top:1.2em;
+}
+
+.matchup__container__item::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.date__container {
+  border-bottom: 1px solid#CCC;
+  margin-bottom: 1.2em;
+  padding-bottom:1.2em;
+  color:#9CD2F0;
+  font-weight: 600;
+  padding-top:3em;
+}
+
+.time__container {
+  float: left;
+  width: 20%;
+}
+
+.participants__container {
+  float: left;
+  width: 70%;
+}
+
+.moneyline__container {
+  float: left;
+}
+
+.matchup__container {
+  list-style-type:  none;
+}
+

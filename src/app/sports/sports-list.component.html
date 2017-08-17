@@ -1,5 +1,8 @@
-<ul class="list" *ngIf='sports && sports.length'>
-  <li *ngFor='let sport of sports'>
-    <a [routerLink]="['/leagues', sport.id]">{{ sport.name }}</a>
-  </li>
-</ul>
+<div class="list__container">
+  <ul class="list" *ngIf='sports && sports.length'>
+    <div><strong>{{sports.length}}</strong> Sport<span *ngIf="sports.length > 1">s</span> found</div>
+    <li *ngFor='let sport of sports'>
+      <a [routerLink]="['/leagues', sport.id]">{{ sport.name }}</a>
+    </li>
+  </ul>
+</div>

@@ -1,13 +1,23 @@
-<div *ngIf='matchups && matchups.length'>
-  <ul>
-    <li *ngFor='let matchup of matchups'>
-      <ul>
-        <li>{{matchup.startTime}}</li>
-        <div *ngIf='matchup.moneyline'>
-          <li>{{matchup.moneyline[0].price}}</li>
-          <li>{{matchup.moneyline[1].price}}</li>
+<div>
+  <ul class="matchup__container" *ngIf='groups && groups.length'>
+    <div><strong>{{matchups.length}}</strong> Matchup<span *ngIf="matchups.length > 1">s</span> found</div>
+    <li *ngFor='let group of groups'>
+      <div class="date__container">
+        <span>{{group.startTime | date:'mediumDate'}}</span>
+      </div>
+      <div class="matchup__container__item" *ngFor='let matchup of group.matchups'>
+        <div class="time__container">
+          <span>{{matchup.startTime | date:'hh:mm'}}</span>
         </div>
-      </ul>
-    </li>
+        <div class="participants__container">
+          <span>{{matchup.participants[0].name}}</span><br />
+          <span>{{matchup.participants[1].name}}</span>
+        </div>
+        <div class="moneyline__container" *ngIf='matchup.moneyline'>
+          <span>{{matchup.moneyline[0].price | convertToAbsoluteValue }}</span><br />
+          <span>{{matchup.moneyline[1].price | convertToAbsoluteValue }}</span>
+        </div>
+      </div>
+      <li>
   </ul>
 </div>

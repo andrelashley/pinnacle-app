@@ -7,6 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { LeaguesListComponent } from './sports/leagues-list.component';
+import { MatchupsListComponent } from './sports/matchups-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: 'sports', component: SportsListComponent },
       { path: '', redirectTo: 'sports', pathMatch: 'full' },
       { path: '**', redirectTo: 'sports', pathMatch: 'full' }
     ]),

@@ -1,3 +1,4 @@
+import { ConvertToAbsoluteValuePipe } from './convert-to-absolute-value.pipe';
 import { MatchupsListComponent } from './matchups-list.component';
 import { LeaguesListComponent } from './leagues-list.component';
 import { SportsListComponent } from './sports-list.component';
@@ -9,16 +10,17 @@ import { CommonModule } from "@angular/common";
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'sports', component: SportsListComponent },
-      { path: 'leagues/:sportsId', component: LeaguesListComponent },
-      { path: 'matchups/:leagueId', component: MatchupsListComponent }
+      { path: 'sports', component: SportsListComponent},
+      { path: 'leagues/:sportsId', component: LeaguesListComponent},
+      { path: 'matchups/:leagueId', component: MatchupsListComponent}
     ]),
     CommonModule
   ],
   declarations: [
     SportsListComponent,
     LeaguesListComponent,
-    MatchupsListComponent
+    MatchupsListComponent,
+    ConvertToAbsoluteValuePipe
   ],
   providers: [
     PinnacleService

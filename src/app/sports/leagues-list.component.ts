@@ -1,3 +1,4 @@
+import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
 import { ILeague } from './League';
 import { PinnacleService } from './pinnacle.service';
 import { IMatchup } from './Matchup';
@@ -12,8 +13,7 @@ export class LeaguesListComponent implements OnInit {
   errorMessage: string;
   leagues: ILeague[] = [];
 
-
-  constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute) { }
+  constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
     let sportsId = +this._route.snapshot.paramMap.get('sportsId');

@@ -1,22 +1,13 @@
 import { IMatchup } from './Matchup';
-import { IMoneyLine } from './MoneyLine';
-import { IParticipant } from './Participant';
+import { List } from "underscore";
+import * as _ from "underscore";
+
 export class MatchupViewModel {
-  id: number;
-  name: string;
-  homeParticipant: IParticipant;
-  //homeMoneyLine: IMoneyLine;
-  awayParticipant: IParticipant;
-  //awayMoneyLine: IMoneyLine;
+  startTime: Date;
+  matchups: IMatchup[] = [];
 
-  constructor(matchup: IMatchup) {
-
-    //console.log(matchup.moneyline);
-
-    this.name = matchup.name;
-    this.homeParticipant = matchup.participants[0];
-    this.awayParticipant = matchup.participants[1];
-    //this.homeMoneyLine = matchup.moneyline[0];
-    //this.awayMoneyLine = matchup.moneyline[1];
+  constructor(time: string, matches: List<IMatchup>) {
+    this.startTime = new Date(time);
+    _.forEach(matches, item => this.matchups.push(item));
   }
 }

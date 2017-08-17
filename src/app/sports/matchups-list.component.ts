@@ -1,8 +1,12 @@
+import { element } from 'protractor';
 import { MatchupViewModel } from './MatchupViewModel';
 import { ActivatedRoute } from '@angular/router';
 import { IMatchup } from './Matchup';
 import { PinnacleService } from './pinnacle.service';
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import * as _ from 'underscore';
+import * as moment from 'moment/moment';
 
 @Component({
   templateUrl: './matchups-list.component.html',
@@ -11,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 export class MatchupsListComponent implements OnInit {
 
   matchups: IMatchup[] = [];
-  matchupDisplay: MatchupViewModel[];
+  groups: MatchupViewModel[] = [];
   errorMessage: string;
 
   constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute) { }
@@ -22,11 +26,12 @@ export class MatchupsListComponent implements OnInit {
       .subscribe(matchups => {
         this.matchups = matchups;
 
-        console.log(this.matchups);
-
-        //console.log(this.matchups[0].moneyline[0]);
-
-        //this.matchupDisplay = this.matchups.map(matchup => new MatchupViewModel(matchup));
+        let matchupsByDate = _(this.matchups).groupBy(item => moment(item.startTime).format('MMM, D, Y'));
+        for (var key in matchupsByDate) {
+          if (matchupsByDate.hasOwnProperty(key)) {
+            this.groups.push(new MatchupViewModel(key, matchupsByDate[key]));
+          }
+        }
       },
       error => this.errorMessage = <any>error)
   }
