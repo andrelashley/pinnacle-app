@@ -13,14 +13,10 @@ export class LeaguesListComponent implements OnInit {
   errorMessage: string;
   leagues: ILeague[] = [];
 
-  constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute) {}
+  constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    let sportsId = +this._route.snapshot.paramMap.get('sportsId');
-    this._pinnacleService.getLeagues(sportsId)
-      .subscribe(leagues => {
-        this.leagues = leagues
-      },
-      error => this.errorMessage = <any>error);
+    this.leagues = this._route.snapshot.data['leagues'];
   }
+
 }

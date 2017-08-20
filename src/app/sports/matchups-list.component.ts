@@ -21,18 +21,12 @@ export class MatchupsListComponent implements OnInit {
   constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    let leagueId = +this._route.snapshot.paramMap.get('leagueId');
-    this._pinnacleService.getMatchups(leagueId)
-      .subscribe(matchups => {
-        this.matchups = matchups;
-
-        let matchupsByDate = _(this.matchups).groupBy(item => moment(item.startTime).format('MMM, D, Y'));
-        for (var key in matchupsByDate) {
-          if (matchupsByDate.hasOwnProperty(key)) {
-            this.groups.push(new MatchupViewModel(key, matchupsByDate[key]));
-          }
-        }
-      },
-      error => this.errorMessage = <any>error)
+    this.matchups = this._route.snapshot.data['matchups'];
+    let matchupsByDate = _(this.matchups).groupBy(item => moment(item.startTime).format('MMM, D, Y'));
+    for (var key in matchupsByDate) {
+      if (matchupsByDate.hasOwnProperty(key)) {
+        this.groups.push(new MatchupViewModel(key, matchupsByDate[key]));
+      }
+    }
   }
 }

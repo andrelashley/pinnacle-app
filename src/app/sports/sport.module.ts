@@ -6,13 +6,16 @@ import { PinnacleService } from './pinnacle.service';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from "@angular/common";
+import { SportsResolver } from "./sports-resolver.service";
+import { LeaguesResolver } from "./leagues-resolver.service";
+import { MatchupsResolver } from "./matchups-resolver.service";
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'sports', component: SportsListComponent},
-      { path: 'leagues/:sportsId', component: LeaguesListComponent},
-      { path: 'matchups/:leagueId', component: MatchupsListComponent}
+      { path: 'sports', component: SportsListComponent, resolve: { sports: SportsResolver } },
+      { path: 'leagues/:sportsId', component: LeaguesListComponent, resolve: { leagues: LeaguesResolver } },
+      { path: 'matchups/:leagueId', component: MatchupsListComponent, resolve: { matchups: MatchupsResolver } }
     ]),
     CommonModule
   ],
@@ -23,7 +26,10 @@ import { CommonModule } from "@angular/common";
     ConvertToAbsoluteValuePipe
   ],
   providers: [
-    PinnacleService
+    PinnacleService,
+    SportsResolver,
+    LeaguesResolver,
+    MatchupsResolver
   ]
 })
 export class SportModule { }
