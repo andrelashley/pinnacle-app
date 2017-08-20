@@ -2,7 +2,7 @@
   <ul class="list" *ngIf='sports && sports.length'>
     <div><strong>{{sports.length}}</strong> Sport<span *ngIf="sports.length > 1">s</span> found</div>
     <li *ngFor='let sport of sports'>
-      <a [routerLink]="['/leagues', sport.id]">{{ sport.name }}</a>
+      <a [routerLink]="['/leagues', sport.id]">{{ sport.name }} <span class="glyphicon glyphicon-chevron-right"></span></a>
     </li>
   </ul>
 </div>
