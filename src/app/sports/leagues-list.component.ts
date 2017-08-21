@@ -12,11 +12,14 @@ import { ActivatedRoute } from "@angular/router";
 export class LeaguesListComponent implements OnInit {
   errorMessage: string;
   leagues: ILeague[] = [];
+  sportName: string;
 
-  constructor(private _route: ActivatedRoute) {}
+  constructor(private _route: ActivatedRoute, private breadcrumbService: BreadcrumbService) {}
 
   ngOnInit(): void {
     this.leagues = this._route.snapshot.data['leagues'];
+    this.breadcrumbService.addCallbackForRouteRegex('^/sports/leagues/[0-9]+',
+      (id) => { return this.leagues[0].sport.name });
   }
 
 }

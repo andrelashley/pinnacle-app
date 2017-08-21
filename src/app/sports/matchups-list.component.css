@@ -47,3 +47,7 @@
   list-style-type:  none;
 }
 
+div > p {
+  text-align: center;
+}
+

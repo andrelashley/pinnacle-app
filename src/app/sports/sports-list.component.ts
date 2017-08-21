@@ -11,7 +11,7 @@ export class SportsListComponent implements OnInit {
   sports: ISport[] = [];
   errorMessage: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.sports = this.route.snapshot.data['sports'];

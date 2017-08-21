@@ -2,7 +2,10 @@
   <ul *ngIf='leagues && leagues.length'>
     <div><strong>{{leagues.length}}</strong> League<span *ngIf="leagues.length > 1">s</span> found</div>
     <li *ngFor='let league of leagues'>
-      <a [routerLink]="['/matchups', league.id]">{{ league.name }} <span class="glyphicon glyphicon-chevron-right"></span></a>
+      <a [routerLink]="['/sports/leagues/matchups', league.id]">{{ league.name }} <span class="glyphicon glyphicon-chevron-right"></span></a>
     </li>
   </ul>
+  <p *ngIf='leagues && leagues.length == 0'>
+      <strong>There were no leagues found for this sport.</strong>
+    </p>
 </div>

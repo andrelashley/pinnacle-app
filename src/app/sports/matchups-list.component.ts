@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import * as _ from 'underscore';
 import * as moment from 'moment/moment';
+import { BreadcrumbService } from "ng2-breadcrumb/ng2-breadcrumb";
 
 @Component({
   templateUrl: './matchups-list.component.html',
@@ -18,7 +19,7 @@ export class MatchupsListComponent implements OnInit {
   groups: MatchupViewModel[] = [];
   errorMessage: string;
 
-  constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute) { }
+  constructor(private _pinnacleService: PinnacleService, private _route: ActivatedRoute, private breadcrumbService: BreadcrumbService) {}
 
   ngOnInit(): void {
     this.matchups = this._route.snapshot.data['matchups'];
@@ -28,5 +29,11 @@ export class MatchupsListComponent implements OnInit {
         this.groups.push(new MatchupViewModel(key, matchupsByDate[key]));
       }
     }
+    if (this.matchups.length > 0) {
+      this.breadcrumbService.addCallbackForRouteRegex('^/sports/leagues/matchups/[0-9]+',
+       (id: string) => { return this.matchups[0].league.name });
+    }
   }
+
+
 }

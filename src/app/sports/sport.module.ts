@@ -13,9 +13,9 @@ import { MatchupsResolver } from "./matchups-resolver.service";
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'sports', component: SportsListComponent, resolve: { sports: SportsResolver } },
-      { path: 'leagues/:sportsId', component: LeaguesListComponent, resolve: { leagues: LeaguesResolver } },
-      { path: 'matchups/:leagueId', component: MatchupsListComponent, resolve: { matchups: MatchupsResolver } }
+      { path: 'sports', component: SportsListComponent, resolve: { sports: SportsResolver }, data: { breadcrumb: 'Sports' } },
+      { path: 'sports/leagues/:sportsId', component: LeaguesListComponent, resolve: { leagues: LeaguesResolver }, data: { breadcrumb: 'Leagues' } },
+      { path: 'sports/leagues/matchups/:leagueId', component: MatchupsListComponent, resolve: { matchups: MatchupsResolver }, data: { breadcrumb: 'Matchups' } }
     ]),
     CommonModule
   ],

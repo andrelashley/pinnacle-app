@@ -1,5 +1,5 @@
 <div>
-  <ul class="matchup__container" *ngIf='groups && groups.length'>
+  <ul class="matchup__container">
     <div><strong>{{matchups.length}}</strong> Matchup<span *ngIf="matchups.length > 1">s</span> found</div>
     <li *ngFor='let group of groups'>
       <div class="date__container">
@@ -20,4 +20,7 @@
       </div>
       <li>
   </ul>
+  <p *ngIf='groups && groups.length == 0'>
+    <strong>There were no matchups found for this league.</strong>
+  </p>
 </div>

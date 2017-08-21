@@ -1,3 +1,6 @@
+import { ISport } from "./Sport";
+
 export interface ILeague {
-  name: string
+  name: string;
+  sport: ISport;
 }
